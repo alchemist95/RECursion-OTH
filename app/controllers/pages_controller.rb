@@ -30,7 +30,7 @@ class PagesController < ApplicationController
       myHash["Score"] = -1;
       myHash = myHash.to_json
     end
-    respond_to do |format|
+      respond_to do |format|
       format.html {}
       format.json { render json: myHash}
     end

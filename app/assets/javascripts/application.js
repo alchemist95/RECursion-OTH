@@ -28,7 +28,7 @@ $(document).ready(function() {
 	 		data: {"myAnswer" : $("#myAnswerText").val()},
 	 		success: function(data){
 				if (data["Score"] == -1){
-					$("#myResult").html("Incorrect");
+					$("#myResult").html("<script>toastr['error']('Incorrect Answer');</script>");
 				}
 				else if(data["Statement"] == "XXX"){
 					var myScore = data["Score"];
@@ -36,7 +36,7 @@ $(document).ready(function() {
 					$("#userPro").find("#myScore").text(myScore);
 					$("#userPro").find("#myLevel").text(myLevel);
 					$("#hunt").hide();				
-					$("#myResult").html("Correct!! Wait for further questions!!");
+					$("#myResult").html("<script>toastr['info']('Correct Answer. Questions uploading soon');</script>");
 				}
 				else{
 					var statement = data["Statement"];
@@ -49,7 +49,7 @@ $(document).ready(function() {
 					$("#myQuestion").append('<span><img src=\"/images/'+image+'\"></span>');
 					$("#userPro").find("#myScore").text(myScore);
 					$("#userPro").find("#myLevel").text(myLevel);
-					$("#myResult").html("Correct");
+					$("#myResult").html("<script>toastr['notice']('Correct Answer. Level Up!!');</script>");
 				}
 				document.getElementById("answerForm").reset();
 	 		},
