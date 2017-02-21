@@ -49,7 +49,7 @@ $(document).ready(function() {
 					$("#myQuestion").append('<span><img src=\"/images/'+image+'\"></span>');
 					$("#userPro").find("#myScore").text(myScore);
 					$("#userPro").find("#myLevel").text(myLevel);
-					$("#myResult").html("<script>toastr['notice']('Correct Answer. Level Up!!');</script>");
+					$("#myResult").html("<script>toastr['info']('Correct Answer. Level Up!!');</script>");
 				}
 				document.getElementById("answerForm").reset();
 	 		},
