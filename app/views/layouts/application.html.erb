@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TH</title>
+  		<meta name="description" content="Learn how to code your first responsive website with the new Twitter Bootstrap 3.">
+
+		<!-- Mobile viewport optimized -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color: #ecf0f1;">
+<% unless flash.empty? %>
+     <script type="text/javascript">
+          <% flash.each do |f| %>
+	      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+	     	 toastr['<%= type %>']('<%= f[1] %>');
+	   <% end %>
+     </script>
+<% end %>
+
+<div class="navbar navbar-default" id="mera">
+<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+ <ul class="nav navbar-nav">
+
+<% if current_user %>
+ 
+<% if current_user.admin? %>
+	<li><%= link_to "Admin", '/sapphire' %></li>
+	<% end %>
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Edit Your Profile", edit_user_path(current_user) %></li>
+  <li><%= link_to "Scoreboard", scoreboard_path %></li>
+  <%= link_to "Log Out", signout_path, class: "btn btn-default navbar-btn" %>
+
+<% else %>
+  <%= link_to "Facebook", '/auth/facebook', class: "btn btn-default navbar-btn" %>
+<% end %>
+
+</ul>
+</div>
+</div>
+<div class="container" id="main">
+<%= yield %>
+</div>
+
+<br><br><br>
+<!-- <footer id="neeche">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+			<h6>Copyright &copy; 2013 {alchemist95}</h6>
+			</div>
+-
+			<div class="col-sm-4">
+				<h6>About Us</h6>
+				<p>sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!sapphire is bringing it!!</p>
+			</div>
+
+			<div class="col-sm-2">
+				<h6>Navigation</h6>
+				<ul class="unstyled">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Services</a></li>
+					<li><a href="#">Links</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+
+			<div class="col-sm-2">
+				<h6>Follow Us</h6>
+				<ul class="unstyled">
+					<li><a href="#">Twitter</a></li>
+					<li><a href="#">Facebook</a></li>
+					<li><a href="#">Google Plus</a></li>
+				</ul>
+			</div>
+
+			<div class="col-sm-2">
+				<h6>Coded with <span class="glyphicon glyphicon-heart"></span> by alchemist95</h6>
+			</div>					</div>
+	</div>
+
+</footer> -->
+
+
+</body>
+</html>

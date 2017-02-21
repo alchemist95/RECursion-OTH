@@ -1,0 +1,37 @@
+
+
+
+<% if current_user %>
+<div class="container" id="userPro">
+<%= image_tag(current_user.image_url, size: '50x50') %>&nbsp;&nbsp;
+<%= current_user.name %><%= ", "%><%= current_user.college %>
+
+<p style="font-size:20px; float:right;"><%= "Score : "%><span id="myScore"><%= current_score %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= "Level : "%><span id="myLevel"><%= (current_score==0)?1:current_score/10+1 %></span></p>
+
+
+<div id="hunt">
+<% if @question!=nil %>
+	<div id="myQuestion">
+	<h2><%= @question.statement %></h2>
+	<span id="myImage"><%= image_tag(@question.image_url)%></span>
+	</div>
+	<br /><br />
+
+
+	<form id="answerForm">
+	<input type="text" name="answer" id="myAnswerText" placeholder="Type your answer here">
+	<input type="submit" name="submit" id="myAnswer">
+	</form>
+<% else %>
+<br /><br />
+<h2>Wait for upcoming questions</h2>
+<% end %>
+</div>
+
+
+<div id="myResult">
+</div>
+
+<% end %>
+
+
