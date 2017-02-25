@@ -3,12 +3,15 @@ class Ability
 
   def initialize(user)
 
-    user ||= User.new
+    user ||= current_user
 
     if user.admin?
       can :manage, :all
+      can :access, :rails_admin
+      can :dashboard
     else
-      can :manage, Question
+  	  can :manage, :all
+      cannot :access, :rails_admin
     end
 
   end
