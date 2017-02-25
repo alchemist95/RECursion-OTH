@@ -10,7 +10,7 @@ class Ability
       can :access, :rails_admin
       can :dashboard
     else
-  	  can :manage, :all
+  	  can :read, :all
       cannot :access, :rails_admin
     end
 

@@ -2,9 +2,9 @@ class PagesController < ApplicationController
 
   before_action :find_question, only: [:home, :abdv]
   before_action :authenticate, only: [:abdv, :scoreboard]
+  
 
   def home
-    authorize! :home, @question, message: "You are not authorized to view this"
   end
 
   def abdv

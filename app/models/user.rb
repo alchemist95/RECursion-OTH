@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+validates :name, :email, :provider, :uid, :role, presence: true
+
   	enum role: [
 				:normal,
 				:admin
@@ -19,6 +21,7 @@ class << self
 			user.provider=auth.provider
 			user.image_url=info.image
 			user.score = 0
+			user.email = info.email
 			user.role = 0
 			$found_or_created=2
 		end
